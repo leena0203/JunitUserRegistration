@@ -11,12 +11,18 @@ public class UserRegJunit {
 				System.out.println("First Name " +fname+" is: "+ userregjunitobj.validatefname(fname));
 				String lname = sc.nextLine();
 				System.out.println("LastName "+lname+" is: "+ userregjunitobj.validatelname(lname));
-				String email = sc.nextLine();
-				System.out.println("EmailId "+email+" is: "+ userregjunitobj.validateEmail(email));
 				String number = sc.nextLine();
 				System.out.println("Mobile Format "+number+" is: "+ userregjunitobj.validateMobileNo(number));
 				String password = sc.nextLine();
 				System.out.println("Password "+password+" is: "+ userregjunitobj.validatePassword(password));
+				String[] multipleEmail;
+				multipleEmail =  new String[]{"abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com", "abc-100@abc.net",
+						"abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com",
+						"abc", "abc@.com.my", "abc123@gmail.a", "abc123@.com", "abc123@.com.com", ".abc@abc.com", "abc()*.com", "abc@%*.com",
+						"abc..2002@gmail.com", "abc.@gmail.com", "abc@abc@gmail.com", "abc@gmail.com.1a", "abc@gmail.com.aa.au"};
+				for(int i=0; i< multipleEmail.length; i++) {
+				System.out.println("EmailId "+multipleEmail[i]+" is: "+ userregjunitobj.validateEmail(multipleEmail[i]));
+				}
 			}   
 			public String matchpattern(String regex, String input) {   
 		    	  Pattern pattern = Pattern.compile(regex);
