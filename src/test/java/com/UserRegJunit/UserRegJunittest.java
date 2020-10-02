@@ -40,7 +40,7 @@ class UserRegJunittest {
 	@Test
 	public void Password() {
 	       UserRegJunit userregjunitobj = new UserRegJunit();
-	       String input1 = userregjunitobj.validatePassword("Sbreton6");
+	       String input1 = userregjunitobj.validatePassword("Sbret#on6");
 	       assertTrue(input1 == "Valid");
 	       String input2 = userregjunitobj.validatePassword("omnt#yti5");
 	       assertTrue(input2 == "Invalid"); 

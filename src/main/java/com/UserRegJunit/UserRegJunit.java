@@ -45,7 +45,7 @@ public class UserRegJunit {
 		    	  return matchpattern(regex, s);
 		    }
 			public String validatePassword(String s) {                 // valid Password format
-		    	  String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
+		    	  String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%#*?&])[A-Za-z\\d@#$!%*?&]{8,}$";
 		    	  return matchpattern(regex, s);
 		    }
 }
