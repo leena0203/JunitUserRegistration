@@ -20,5 +20,13 @@ class UserRegJunittest {
 	       assertTrue(input1 == "Valid");
 	       String input2 = userregjunitobj.validatelname("s123ro");
 	       assertTrue(input2 == "Invalid"); 
-		}	       
+		}	 
+	@Test
+	public void email() {
+	       UserRegJunit userregjunitobj = new UserRegJunit();
+	       String input1 = userregjunitobj.validateEmail("abc.ghy@bl.co.jaddg");
+	       assertTrue(input1 == "Valid");
+	       String input2 = userregjunitobj.validateEmail("leenasaorde55467@vo.bl.com");
+	       assertTrue(input2 == "Invalid"); 
+		}	
 }

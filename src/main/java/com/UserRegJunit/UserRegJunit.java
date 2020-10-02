@@ -1,21 +1,20 @@
 package com.UserRegJunit;
-
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-
 public class UserRegJunit {
 			public static void main(String[] args) {
 				// TODO Auto-generated method stub
 				UserRegJunit userregjunitobj = new UserRegJunit();	
 				Scanner sc = new Scanner(System.in);
 				String fname = sc.nextLine();
-				System.out.println("First Name " +fname+" is: "+ userregjunitobj.validatefname(fname) );
+				System.out.println("First Name " +fname+" is: "+ userregjunitobj.validatefname(fname));
 				String lname = sc.nextLine();
-				System.out.println("LastName "+lname+" is "+ userregjunitobj.validatelname(lname) );
+				System.out.println("LastName "+lname+" is: "+ userregjunitobj.validatelname(lname));
+				String email = sc.nextLine();
+				System.out.println("EmailId "+email+" is: "+ userregjunitobj.validateEmail(email));
 			}   
-			public String matchpattern(String regex, String input) {
+			public String matchpattern(String regex, String input) {   
 		    	  Pattern pattern = Pattern.compile(regex);
 		    	  Matcher matcher = pattern.matcher(input);
 		    	  if(matcher.find()) {
@@ -25,14 +24,16 @@ public class UserRegJunit {
 		    	       return "Invalid";
 		          }
 		      }
-			public String validatefname(String s) {
+			public String validatefname(String s) {                  // valid first name
 		    	  String regex = "(^[A-Z]{1})[a-z]{2,}$";
 		    	  return matchpattern(regex, s);
 		    }
-			public String validatelname(String s) {
+			public String validatelname(String s) {                 // valid last name
 		    	  String regex = "(^[A-Z]{1})[a-z]{2,}$";
 		    	  return matchpattern(regex, s);
-			
 		    }
-			
+			public String validateEmail(String s) {                 // valid emailId
+		    	  String regex = "^(abc[.][A-Za-z]+@bl[.]co[.][A-Za-z]{3,25})$";
+		    	  return matchpattern(regex, s);
+		    }
 }
