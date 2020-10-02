@@ -6,10 +6,19 @@ import org.junit.jupiter.api.Test;
 
 class UserRegJunittest {
 	@Test
-	public void test() {
-	       UserRegJunit fnameobj = new UserRegJunit();
-	       String S = fnameobj.validateInput("Leena");
-	       assertTrue(S == "Valid");
+	public void fname() {
+	       UserRegJunit userregjunitobj = new UserRegJunit();
+	       String input1 = userregjunitobj.validatefname("Leena");
+	       assertTrue(input1 == "Valid");
+	       String input2 = userregjunitobj.validatelname("nikita");
+	       assertTrue(input2 == "Invalid");
 		}
-
+	@Test
+	public void lname() {
+	       UserRegJunit userregjunitobj = new UserRegJunit();
+	       String input1 = userregjunitobj.validatelname("Sarode");
+	       assertTrue(input1 == "Valid");
+	       String input2 = userregjunitobj.validatelname("s123ro");
+	       assertTrue(input2 == "Invalid"); 
+		}	       
 }

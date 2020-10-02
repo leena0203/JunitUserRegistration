@@ -6,24 +6,33 @@ import java.util.regex.Pattern;
 
 
 public class UserRegJunit {
-		public String validateInput(String s) {
-		   	  String regex = "^[A-Z]*[A-Za-z]{3,25}$";
-		      Pattern pattern = Pattern.compile(regex);
-		   	  Matcher matcher = pattern.matcher(s);
-		   	  if(matcher.find()) {
-		   		   return "Valid";
-		   	  }
-		   	  else {
-		   		  return "Invaild";
-		     }
-		     }
 			public static void main(String[] args) {
 				// TODO Auto-generated method stub
+				UserRegJunit userregjunitobj = new UserRegJunit();	
 				Scanner sc = new Scanner(System.in);
-				String input = sc.nextLine();
-		        UserRegJunit fnameobj = new UserRegJunit();	
-				System.out.println("Inuput is:" +fnameobj.validateInput(input) );
-			}        
-	    }
-
-
+				String fname = sc.nextLine();
+				System.out.println("First Name " +fname+" is: "+ userregjunitobj.validatefname(fname) );
+				String lname = sc.nextLine();
+				System.out.println("LastName "+lname+" is "+ userregjunitobj.validatelname(lname) );
+			}   
+			public String matchpattern(String regex, String input) {
+		    	  Pattern pattern = Pattern.compile(regex);
+		    	  Matcher matcher = pattern.matcher(input);
+		    	  if(matcher.find()) {
+		    		  return "Valid" ;
+		    	  }
+		    	  else {
+		    	       return "Invalid";
+		          }
+		      }
+			public String validatefname(String s) {
+		    	  String regex = "(^[A-Z]{1})[a-z]{2,}$";
+		    	  return matchpattern(regex, s);
+		    }
+			public String validatelname(String s) {
+		    	  String regex = "(^[A-Z]{1})[a-z]{2,}$";
+		    	  return matchpattern(regex, s);
+			
+		    }
+			
+}
