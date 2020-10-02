@@ -13,6 +13,8 @@ public class UserRegJunit {
 				System.out.println("LastName "+lname+" is: "+ userregjunitobj.validatelname(lname));
 				String email = sc.nextLine();
 				System.out.println("EmailId "+email+" is: "+ userregjunitobj.validateEmail(email));
+				String number = sc.nextLine();
+				System.out.println("Mobile Format "+number+" is: "+ userregjunitobj.validateMobileNo(number));
 			}   
 			public String matchpattern(String regex, String input) {   
 		    	  Pattern pattern = Pattern.compile(regex);
@@ -34,6 +36,10 @@ public class UserRegJunit {
 		    }
 			public String validateEmail(String s) {                 // valid emailId
 		    	  String regex = "^(abc[.][A-Za-z]+@bl[.]co[.][A-Za-z]{3,25})$";
+		    	  return matchpattern(regex, s);
+		    }
+			public String validateMobileNo(String s) {                 // valid Mobile format
+		    	  String regex = "^([0-9]{2}[ ][0-9]{10})$";
 		    	  return matchpattern(regex, s);
 		    }
 }
