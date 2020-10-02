@@ -36,5 +36,13 @@ class UserRegJunittest {
 	       assertTrue(input1 == "Valid");
 	       String input2 = userregjunitobj.validateMobileNo("912 567483920");
 	       assertTrue(input2 == "Invalid"); 
-		}	
+		}
+	@Test
+	public void Password() {
+	       UserRegJunit userregjunitobj = new UserRegJunit();
+	       String input1 = userregjunitobj.validatePassword("Sbreton92");
+	       assertTrue(input1 == "Valid");
+	       String input2 = userregjunitobj.validatePassword("Smnt@yti5");
+	       assertTrue(input2 == "Invalid"); 
+		}
 }

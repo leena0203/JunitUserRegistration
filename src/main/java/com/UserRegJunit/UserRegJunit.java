@@ -15,6 +15,8 @@ public class UserRegJunit {
 				System.out.println("EmailId "+email+" is: "+ userregjunitobj.validateEmail(email));
 				String number = sc.nextLine();
 				System.out.println("Mobile Format "+number+" is: "+ userregjunitobj.validateMobileNo(number));
+				String password = sc.nextLine();
+				System.out.println("Password "+password+" is: "+ userregjunitobj.validatePassword(password));
 			}   
 			public String matchpattern(String regex, String input) {   
 		    	  Pattern pattern = Pattern.compile(regex);
@@ -40,6 +42,10 @@ public class UserRegJunit {
 		    }
 			public String validateMobileNo(String s) {                 // valid Mobile format
 		    	  String regex = "^([0-9]{2}[ ][0-9]{10})$";
+		    	  return matchpattern(regex, s);
+		    }
+			public String validatePassword(String s) {                 // valid Password format
+		    	  String regex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
 		    	  return matchpattern(regex, s);
 		    }
 }
