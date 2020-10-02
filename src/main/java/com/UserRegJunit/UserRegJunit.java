@@ -37,7 +37,7 @@ public class UserRegJunit {
 		    	  return matchpattern(regex, s);
 		    }
 			public String validateEmail(String s) {                 // valid emailId
-		    	  String regex = "^(abc[.][A-Za-z]+@bl[.]co[.][A-Za-z]{3,25})$";
+		    	  String regex = "^[a-z]+[.|+_-]?[a-z0-9]+[@][a-z0-9]{1,}[.][a-z]{2,}[.]{0,1}[a-z]*$";
 		    	  return matchpattern(regex, s);
 		    }
 			public String validateMobileNo(String s) {                 // valid Mobile format

@@ -24,10 +24,22 @@ class UserRegJunittest {
 	@Test
 	public void email() {
 	       UserRegJunit userregjunitobj = new UserRegJunit();
-	       String input1 = userregjunitobj.validateEmail("abc.ghy@bl.co.jaddg");
+	       String input1 = userregjunitobj.validateEmail("abc@yahoo.com");
 	       assertTrue(input1 == "Valid");
-	       String input2 = userregjunitobj.validateEmail("leenasaorde55467@vo.bl.com");
-	       assertTrue(input2 == "Invalid"); 
+	       String input2 = userregjunitobj.validateEmail("abc-100@yahoo.com");
+	       assertTrue(input2 == "Valid");
+	       String input3 = userregjunitobj.validateEmail("abc-100@abc.net");
+	       assertTrue(input3 == "Valid");
+	       String input4 = userregjunitobj.validateEmail("abc111@abc.com");
+	       assertTrue(input4 == "Valid");
+	       String input5 = userregjunitobj.validateEmail("abc+100@gmail.com");
+	       assertTrue(input5 == "Valid");
+	       String input6 = userregjunitobj.validateEmail("abc123@.com");
+	       assertTrue(input6 == "Invalid");
+	       String input7 = userregjunitobj.validateEmail("abc@%*.com");
+	       assertTrue(input7 == "Invalid");
+	       String input8 = userregjunitobj.validateEmail("abc@gmail.com.aa.au");
+	       assertTrue(input8 == "Invalid");
 		}	
 	@Test
 	public void number() {
