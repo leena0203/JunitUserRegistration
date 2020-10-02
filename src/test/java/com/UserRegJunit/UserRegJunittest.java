@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class UserRegJunittest {
+    /**
 	@Test
 	public void fname() {
 	       UserRegJunit userregjunitobj = new UserRegJunit();
@@ -21,6 +22,22 @@ class UserRegJunittest {
 	       String input2 = userregjunitobj.validatelname("s123ro");
 	       assertTrue(input2 == "Invalid"); 
 		}	 
+	@Test
+	public void number() {
+	       UserRegJunit userregjunitobj = new UserRegJunit();
+	       String input1 = userregjunitobj.validateMobileNo("12 8796543015");
+	       assertTrue(input1 == "Valid");
+	       String input2 = userregjunitobj.validateMobileNo("912 567483920");
+	       assertTrue(input2 == "Invalid"); 
+		}
+	@Test
+	public void Password() {
+	       UserRegJunit userregjunitobj = new UserRegJunit();
+	       String input1 = userregjunitobj.validatePassword("Sbret#on6");
+	       assertTrue(input1 == "Valid");
+	       String input2 = userregjunitobj.validatePassword("omnt#yti5");
+	       assertTrue(input2 == "Invalid"); 
+		}
 	@Test
 	public void email() {
 	       UserRegJunit userregjunitobj = new UserRegJunit();
@@ -40,21 +57,24 @@ class UserRegJunittest {
 	       assertTrue(input7 == "Invalid");
 	       String input8 = userregjunitobj.validateEmail("abc@gmail.com.aa.au");
 	       assertTrue(input8 == "Invalid");
-		}	
+		}**/
 	@Test
-	public void number() {
-	       UserRegJunit userregjunitobj = new UserRegJunit();
-	       String input1 = userregjunitobj.validateMobileNo("12 8796543015");
-	       assertTrue(input1 == "Valid");
-	       String input2 = userregjunitobj.validateMobileNo("912 567483920");
-	       assertTrue(input2 == "Invalid"); 
-		}
-	@Test
-	public void Password() {
-	       UserRegJunit userregjunitobj = new UserRegJunit();
-	       String input1 = userregjunitobj.validatePassword("Sbret#on6");
-	       assertTrue(input1 == "Valid");
-	       String input2 = userregjunitobj.validatePassword("omnt#yti5");
-	       assertTrue(input2 == "Invalid"); 
-		}
+	public void ValidateAll() {
+		UserRegJunit userregjunitobj = new UserRegJunit();
+	    String fname = userregjunitobj.validatefname("Leena");
+	    String lname = userregjunitobj.validatelname("Sarode");
+	    String number = userregjunitobj.validateMobileNo("91 9865437021");
+	    String password = userregjunitobj.validatePassword("Snedr@34u8");
+	    String email = userregjunitobj.validateEmail("abc@yahoo.com");
+	    assertTrue(fname == "Happy" && lname == "Happy" && number == "Happy" && password == "Happy" && email == "Happy" );
+	    
+	    
+	    String fname1 = userregjunitobj.validatefname("Lee2na");
+	    String lname2 = userregjunitobj.validatelname("y@arode");
+	    String number3 = userregjunitobj.validateMobileNo("916 9865437021");
+	    String password4 = userregjunitobj.validatePassword("ynedr@34u8");
+	    String email5 = userregjunitobj.validateEmail("abc%@yahoo.com");
+	    assertTrue(fname1 == "Sad" && lname2 == "Sad" && number3 == "Sad" && password4 == "Sad" && email5 == "Sad" );
+	    
+	}
 }
