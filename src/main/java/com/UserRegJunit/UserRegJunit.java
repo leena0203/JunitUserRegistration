@@ -8,7 +8,7 @@ public class UserRegJunit {
 				
 				UserRegJunit userregjunitobj = new UserRegJunit();	
 				Scanner sc = new Scanner(System.in);
-				String fname = sc.nextLine();
+				/**String fname = sc.nextLine();
 				System.out.println("First Name " +fname+" is: "+ userregjunitobj.validatefname(fname));
 				String lname = sc.nextLine();
 				System.out.println("LastName "+lname+" is: "+ userregjunitobj.validatelname(lname));
@@ -16,6 +16,9 @@ public class UserRegJunit {
 				System.out.println("Mobile Format "+number+" is: "+ userregjunitobj.validateMobileNo(number));
 				String password = sc.nextLine();
 				System.out.println("Password "+password+" is: "+ userregjunitobj.validatePassword(password));
+
+				**/
+                
         String[] multipleEmail;
 				multipleEmail =  new String[]{"abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com", "abc-100@abc.net",
 						"abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com",
@@ -29,13 +32,13 @@ public class UserRegJunit {
 		    	  Pattern pattern = Pattern.compile(regex);
 		    	  Matcher matcher = pattern.matcher(input);
 		    	  if(matcher.find()) {
-		    		  return "Happy" ;
+		    		  return "valid" ;
 		    	  }
 		    	  else {
-		    	       return "Sad";
+		    	       return "invalid";
 		          }
 		      }
-			public String validatefname(String s) {                  // valid first name
+			/**public String validatefname(String s) {                  // valid first name
 		    	  String regex = "(^[A-Z]{1})[a-z]{2,}$";
 		    	  return matchpattern(regex, s);
 		    }
@@ -51,9 +54,9 @@ public class UserRegJunit {
 			public String validatePassword(String s) {                 // valid Password format
 		    	  String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%#*?&])[A-Za-z\\d@#$!%*?&]{8,}$";
 		    	  return matchpattern(regex, s);
-			}
+			}**/
 			public String validateEmail(String s) {                 // valid emailId
-			    	  String regex = "^[a-z]+[.|+_-]?[a-z0-9]+[@][a-z0-9]{1,}[.][a-z]{2,}[.]{0,1}[a-z]*$";
+			    	  String regex = "^[a-zA-Z0-9_]+[-+.]?[A-Za-z0-9_]+@[A-Za-z0-9]+[.][a-z]{2,}[.]?([a-z]{2,})?$";
 			    	  return matchpattern(regex, s);
 			}
 }
