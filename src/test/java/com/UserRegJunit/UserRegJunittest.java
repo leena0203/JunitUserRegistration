@@ -2,79 +2,45 @@ package com.UserRegJunit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+import java.util.*;
 
-class UserRegJunittest {
-    /**
-	@Test
-	public void fname() {
-	       UserRegJunit userregjunitobj = new UserRegJunit();
-	       String input1 = userregjunitobj.validatefname("Leena");
-	       assertTrue(input1 == "Valid");
-	       String input2 = userregjunitobj.validatelname("nikita");
-	       assertTrue(input2 == "Invalid");
-		}
-	@Test
-	public void lname() {
-	       UserRegJunit userregjunitobj = new UserRegJunit();
-	       String input1 = userregjunitobj.validatelname("Sarode");
-	       assertTrue(input1 == "Valid");
-	       String input2 = userregjunitobj.validatelname("s123ro");
-	       assertTrue(input2 == "Invalid"); 
-		}	 
-	@Test
-	public void number() {
-	       UserRegJunit userregjunitobj = new UserRegJunit();
-	       String input1 = userregjunitobj.validateMobileNo("12 8796543015");
-	       assertTrue(input1 == "Valid");
-	       String input2 = userregjunitobj.validateMobileNo("912 567483920");
-	       assertTrue(input2 == "Invalid"); 
-		}
-	@Test
-	public void Password() {
-	       UserRegJunit userregjunitobj = new UserRegJunit();
-	       String input1 = userregjunitobj.validatePassword("Sbret#on6");
-	       assertTrue(input1 == "Valid");
-	       String input2 = userregjunitobj.validatePassword("omnt#yti5");
-	       assertTrue(input2 == "Invalid"); 
-		}
-	@Test
-	public void email() {
-	       UserRegJunit userregjunitobj = new UserRegJunit();
-	       String input1 = userregjunitobj.validateEmail("abc@yahoo.com");
-	       assertTrue(input1 == "Valid");
-	       String input2 = userregjunitobj.validateEmail("abc-100@yahoo.com");
-	       assertTrue(input2 == "Valid");
-	       String input3 = userregjunitobj.validateEmail("abc-100@abc.net");
-	       assertTrue(input3 == "Valid");
-	       String input4 = userregjunitobj.validateEmail("abc111@abc.com");
-	       assertTrue(input4 == "Valid");
-	       String input5 = userregjunitobj.validateEmail("abc+100@gmail.com");
-	       assertTrue(input5 == "Valid");
-	       String input6 = userregjunitobj.validateEmail("abc123@.com");
-	       assertTrue(input6 == "Invalid");
-	       String input7 = userregjunitobj.validateEmail("abc@%*.com");
-	       assertTrue(input7 == "Invalid");
-	       String input8 = userregjunitobj.validateEmail("abc@gmail.com.aa.au");
-	       assertTrue(input8 == "Invalid");
-		}**/
-	@Test
-	public void ValidateAll() {
-		UserRegJunit userregjunitobj = new UserRegJunit();
-	    String fname = userregjunitobj.validatefname("Leena");
-	    String lname = userregjunitobj.validatelname("Sarode");
-	    String number = userregjunitobj.validateMobileNo("91 9865437021");
-	    String password = userregjunitobj.validatePassword("Snedr@34u8");
-	    String email = userregjunitobj.validateEmail("abc@yahoo.com");
-	    assertTrue(fname == "Happy" && lname == "Happy" && number == "Happy" && password == "Happy" && email == "Happy" );
-	    
-	    
-	    String fname1 = userregjunitobj.validatefname("Lee2na");
-	    String lname2 = userregjunitobj.validatelname("y@arode");
-	    String number3 = userregjunitobj.validateMobileNo("916 9865437021");
-	    String password4 = userregjunitobj.validatePassword("ynedr@34u8");
-	    String email5 = userregjunitobj.validateEmail("abc%@yahoo.com");
-	    assertTrue(fname1 == "Sad" && lname2 == "Sad" && number3 == "Sad" && password4 == "Sad" && email5 == "Sad" );
-	    
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+@RunWith(Parameterized.class)
+public class UserRegJunittest {
+	
+	private String email;
+	private String expectedValue;
+	
+	public UserRegJunittest(String email, String expectedValue) {
+		
+		super();
+		this.email = email;
+		this.expectedValue = expectedValue;
 	}
+	
+	@Before
+	public void initialize() {
+		UserRegJunit userregjunit = new UserRegJunit();
+	}
+	
+	@Parameterized.Parameters
+	public static Collection input() {
+		return Arrays.asList(new Object[][] {{"abc-100@yahoo.com", "valid"}, {"abc@yahoo.com", "valid"}, {"abc.100@yahoo.com", "valid"}, 
+		{"abc111@abc.com", "valid"}, {"abc-100@abc.net", "valid"}, {"abc.100@abc.com.au", "valid"}, {"abc@1.com", "valid"}, {"abc@gmail.com.com", "valid"}, 
+		{"abc+100@gmail.com", "valid"},{"abc", "invalid"},{"abc@.com.my","invalid"},{"abc123@gmail.a","invalid"},{"abc123@.com","invalid"},{"abc123@.com.com","invalid"},{".abc@abc.com","invalid"},
+		{"abc()*.com","invalid"},{"abc@%*.com","invalid"},{"abc..2002@gmail.com","invalid"},{"abc.@gmail.com","invalid"},{"abc@abc@gmail.com","invalid"},
+		{"abc@gmail.com.1a","invalid"},{"abc@gmail.com.aa.au","invalid"}});
+	}	
+
+	@Test
+	public void givenSamples_whenExpectedIsTrue_returnTrue() {
+		UserRegJunit userregjunit1 = new UserRegJunit();
+		
+	    assertEquals(expectedValue, userregjunit1.validateEmail(email));
+	        
+    }
 }
