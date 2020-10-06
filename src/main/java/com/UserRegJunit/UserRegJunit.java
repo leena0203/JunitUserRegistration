@@ -4,57 +4,62 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@FunctionalInterface
+interface IValidate {
+	String validate(String s) throws InvalidUserInputException;
+}
+
 public class UserRegJunit {
-	public boolean matchpattern(String regex, String input) {
+	public static boolean matchpattern(String regex, String input) {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(input);
 		return matcher.find();
 	}
 
 	// valid first name
-	public String validatefname(String s) throws InvalidUserInputException {
+	static IValidate validateFname = (String fname) -> {
 		String regex = "(^[A-Z]{1})[a-z]{2,}$";
-		if (matchpattern(regex, s))
+		if (matchpattern(regex, fname))
 			return "Valid";
 		else
 			throw new InvalidUserInputException("Invalid input first name ");
-	}
+	};
 
 	// valid last name
-	public String validatelname(String s) throws InvalidUserInputException {
+	static IValidate validateLname = (String lname) -> {
 		String regex = "(^[A-Z]{1})[a-z]{2,}$";
-		if (matchpattern(regex, s))
+		if (matchpattern(regex, lname))
 			return "Valid";
 		else
 			throw new InvalidUserInputException("Invalid input for last name ");
-	}
+	};
 
 	// valid Mobile format
-	public String validateMobileNo(String s) throws InvalidUserInputException {
+	static IValidate validatePhoneNo = (String number) -> {
 		String regex = "^([0-9]{2}[ ][0-9]{10})$";
-		if (matchpattern(regex, s))
+		if (matchpattern(regex, number))
 			return "Valid";
 		else
 			throw new InvalidUserInputException("Invalid input for Phone Number format ");
-	}
-
+	};
+	
 	// valid Password format
-	public String validatePassword(String s) throws InvalidUserInputException {
-		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%#*?&])[A-Za-z\\d@#$!%*?&]{8,}$";
-		if (matchpattern(regex, s))
+	static IValidate validatePassword = (String password) -> {
+		String regex = // "^((?=.\\d)(?=.[a-z])(?=.[A-Z]))[^!@#$%^&][!@#$%^&][^!@#$%^&]*$";
+				"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%#*?&])[A-Za-z\\d@#$!%*?&]{8,}$";
+		if (matchpattern(regex, password))
 			return "Valid";
 		else
 			throw new InvalidUserInputException("Invalid input for Password ");
-	}
-
+	};
 	// valid emailId
-	public String validateEmail(String s) throws InvalidUserInputException {
+	static IValidate validateEmail = (String email) -> {
 		String regex = "^[a-zA-Z0-9_]+[-+.]?[A-Za-z0-9_]+@[A-Za-z0-9]+[.][a-z]{2,}[.]?([a-z]{2,})?$";
-		if (matchpattern(regex, s))
+		if (matchpattern(regex, email))
 			return "Valid";
 		else
-			throw new InvalidUserInputException("Invalid input for last name ");
-	}
+			throw new InvalidUserInputException("Invalid input for email ");
+	};
 
 	public static void main(String[] args) {
 
@@ -62,26 +67,26 @@ public class UserRegJunit {
 		Scanner sc = new Scanner(System.in);
 		String fname = sc.nextLine();
 		try {
-			System.out.println("First Name " + fname + " is: " + userregjunitobj.validatefname(fname));
+			System.out.println("First Name " + fname + " is: " + validateFname.validate(fname));
 		} catch (InvalidUserInputException e) {
 			e.printStackTrace();
 		}
 
 		String lname = sc.nextLine();
 		try {
-			System.out.println("LastName " + lname + " is: " + userregjunitobj.validatelname(lname));
+			System.out.println("LastName " + lname + " is: " + validateLname.validate(lname));
 		} catch (InvalidUserInputException e) {
 			e.printStackTrace();
 		}
 		String number = sc.nextLine();
 		try {
-			System.out.println("Mobile Format " + number + " is: " + userregjunitobj.validateMobileNo(number));
+			System.out.println("Mobile Format " + number + " is: " + validatePhoneNo.validate(number));
 		} catch (InvalidUserInputException e) {
 			e.printStackTrace();
 		}
 		String password = sc.nextLine();
 		try {
-			System.out.println("Password " + password + " is: " + userregjunitobj.validatePassword(password));
+			System.out.println("Password " + password + " is: " + validatePassword.validate(password));
 		} catch (InvalidUserInputException e) {
 			e.printStackTrace();
 		}
@@ -95,7 +100,7 @@ public class UserRegJunit {
 		for (int i = 0; i < multipleEmail.length; i++) {
 			try {
 				System.out.println(
-						"EmailId " + multipleEmail[i] + " is: " + userregjunitobj.validateEmail(multipleEmail[i]));
+						"EmailId " + multipleEmail[i] + " is: " + validateEmail.validate(multipleEmail[i]));
 			} catch (InvalidUserInputException e) {
 				e.printStackTrace();
 			}
