@@ -22,7 +22,7 @@ class UserRegJunittest {
 	@ValueSource(strings = {"Leena", "Mitali", "Akshay", "Manali"})
 	public void firstName_ifValid_shouldReturnValid(String validFirstNames) {
 		try {
-			assertEquals("Valid", userRegJunit.validatefname(validFirstNames));
+			assertEquals("Valid", userRegJunit.validateFname.validate(validFirstNames));
 		}
 		catch(InvalidUserInputException exception) {
 			System.out.println(exception);
@@ -34,7 +34,7 @@ class UserRegJunittest {
 	public void firstName_ifInvalid_shouldReturnInvalid(String invalidFirstNames) {
 		UserRegJunit object1 = new UserRegJunit();
         Assertions.assertThrows(InvalidUserInputException.class,() -> {
-        	object1.validatePassword(invalidFirstNames);
+        	object1.validateFname.validate(invalidFirstNames);
 		});
 		
 	}
@@ -44,7 +44,7 @@ class UserRegJunittest {
 	@ValueSource(strings = {"Sarode", "Jadhav", "Jain", "Dev"})
 	public void lastName_ifValid_shouldReturnValid(String validLastNames) {
 		try {
-			assertEquals("Valid", userRegJunit.validatelname(validLastNames));
+			assertEquals("Valid", userRegJunit.validateLname.validate(validLastNames));
 		}
 		catch(InvalidUserInputException exception) {
 			System.out.println(exception);
@@ -56,7 +56,7 @@ class UserRegJunittest {
 	public void lastName_ifInvalid_shouldReturnInvalid(String invalidLastNames) {
 		UserRegJunit object1 = new UserRegJunit();
         Assertions.assertThrows(InvalidUserInputException.class,() -> {
-        	object1.validatePassword(invalidLastNames);		
+        	object1.validateLname.validate(invalidLastNames);		
         	});
 		
 	}
@@ -66,7 +66,7 @@ class UserRegJunittest {
 	@ValueSource(strings = {"91 9865326598", "45 9547321098", "00 7564839210"})
 	public void mobile_ifValid_shouldReturnValid(String validMobile) {
 		try {
-			assertEquals("Valid", userRegJunit.validateMobileNo(validMobile));
+			assertEquals("Valid", userRegJunit.validatePhoneNo.validate(validMobile));
 		}
 		catch(InvalidUserInputException exception) {
 			System.out.println(exception);
@@ -78,7 +78,7 @@ class UserRegJunittest {
 	public void mobile_ifInvalid_shouldReturnInvalid(String invalidMobile) {
 		UserRegJunit object1 = new UserRegJunit();
         Assertions.assertThrows(InvalidUserInputException.class,() -> {
-        	object1.validatePassword(invalidMobile);
+        	object1.validatePhoneNo.validate(invalidMobile);
 		});
 			}
 	
@@ -88,7 +88,7 @@ class UserRegJunittest {
 	@ValueSource(strings = {"Svgth_@123", "123@345kjddA"})
 	public void password_ifValid_shouldReturnValid(String validPasswords) {
 		try {
-			assertEquals("Valid", userRegJunit.validatePassword(validPasswords));
+			assertEquals("Valid", userRegJunit.validatePassword.validate(validPasswords));
 		}
 		catch(InvalidUserInputException e) {
 			System.out.println(e);
@@ -100,7 +100,7 @@ class UserRegJunittest {
 	public void password_ifInvalid_shouldReturnInvalid(String invalidPasswords) {
 			UserRegJunit object1 = new UserRegJunit();
 	        Assertions.assertThrows(InvalidUserInputException.class,() -> {
-	        	object1.validatePassword(invalidPasswords);
+	        	object1.validatePassword.validate(invalidPasswords);
 		});
 		
 	}
@@ -111,7 +111,7 @@ class UserRegJunittest {
 			"abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com"})
 	public void email_ifValid_shouldReturnValid(String validEmails) {
 		try {
-			assertEquals("Valid", userRegJunit.validateEmail(validEmails));
+			assertEquals("Valid", userRegJunit.validateEmail.validate(validEmails));
 		}
 		catch(InvalidUserInputException e) {
 			System.out.println(e);
@@ -125,7 +125,7 @@ class UserRegJunittest {
 	public void email_ifInvalid_shouldReturnInvalid(String invalidEmails) {
 		UserRegJunit object1 = new UserRegJunit();
         Assertions.assertThrows(InvalidUserInputException.class,() -> {
-        	object1.validatePassword(invalidEmails);
+        	object1.validateEmail.validate(invalidEmails);
 		});
 	}
 	
