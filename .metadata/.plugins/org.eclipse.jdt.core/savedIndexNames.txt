@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+C:\Users\leena\Desktop\leena\Bridgelabz\Assignment_no._04(Regrex)\Regex\UserRegJunit\.metadata\.plugins\org.eclipse.jdt.core
+2406042108.index
+2872044937.index
