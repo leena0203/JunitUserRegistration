@@ -98,8 +98,7 @@ public class UserRegJunit {
 						"EmailId " + multipleEmail[i] + " is: " + userregjunitobj.validateEmail(multipleEmail[i]));
 			} catch (InvalidUserInputException e) {
 				e.printStackTrace();
-			}
-		}
-	}
-
+      }
+			}   
+  }	
 }
